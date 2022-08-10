@@ -63,11 +63,11 @@ jobs:
       - name: Build and Push Docker image
         id: build
         uses: docker/build-push-action@ac9327eae2b366085ac7f6a2d02df8aa8ead720a
-        env:
-          LLVM_TARGETS_TO_BUILD: "a"
-          LLVM_ENABLE_PROJECTS: "b"
-          LLVM_ENABLE_RUNTIMES: "c"
-          CMAKE_BUILD_TYPE: "d"
+        build-args: |
+          LLVM_TARGETS_TO_BUILD="a;1"
+          LLVM_ENABLE_PROJECTS="b;2"
+          LLVM_ENABLE_RUNTIMES="c;3"
+          CMAKE_BUILD_TYPE="d;4"
         with:
           context: .
           tags: ${{ steps.meta.outputs.tags }}
